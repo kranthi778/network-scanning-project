@@ -489,3 +489,148 @@ In this part, I learned:
 - How to determine software versions.
 - How default NSE scripts improve service identification.
 - Why version detection is important before vulnerability analysis.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# Part 4 – Operating System Detection & Network Path Analysis
+
+## Objective
+
+My goal is to learn how to figure out what operating system the target is using and understand the path that the network takes to get to the target.
+
+---
+
+# Why OS Detection?
+
+After I find out which hosts are live which ports are open and what services are running the next step is to determine some things about the target:
+
+- What Operating System is the target using
+
+- How far away is the target on the network
+
+- What is the route to the target
+
+This information helps people who work in security understand the target environment before they do any more testing.
+
+---
+
+## 1. Operating System Detection
+
+### Scenario
+
+I need to identify the operating system that is running on the target.
+
+### Command
+
+```bash
+
+sudo nmap -O 192.168.1.10
+
+```
+
+### Description
+
+This command tries to identify the operating system by looking at how the target responds to TCP/IP requests.
+
+### Screenshot
+
+![Alt text](screenshots/os-detection.png)
+
+---
+
+## 2. Os Detection
+
+### Scenario
+
+I want to improve the accuracy of the operating system detection.
+
+### Command
+
+```bash
+
+sudo nmap -O --osscan-guess 192.168.1.10
+
+```
+
+### Description
+
+This command tries to guess what operating system is being used when it cannot find a match.
+
+### Screenshot
+
+![Alt text](screenshots/os-guess.png)
+
+---
+
+## 3. Perform Traceroute
+
+### Scenario
+
+I need to find out what path the packets take to get to the target.
+
+### Command
+
+```bash
+
+sudo nmap --traceroute 192.168.1.10
+
+```
+
+### Description
+
+This command shows me the route that the network takes to get from my system to the target.
+
+### Screenshot
+
+![Alt text](screenshots/nmap-traceroute.png)
+
+---
+
+## 4. Determine Network Distance
+
+### Scenario
+
+I want to estimate how many hops it takes to get from my scanner to the target.
+
+### Command
+
+```bash
+
+sudo nmap --reason 192.168.1.10
+
+```
+
+### Description
+
+This command tells me why Nmap thinks the host is in a state and often gives me some useful information, about what it found.
+
+### Screenshot
+
+![Alt text](screenshots/nmap-reason.png)
+
+---
+
+# Key Concepts Learned
+
+- Operating System Detection
+
+- TCP/IP Fingerprinting
+
+- Traceroute
+
+- Network Path Analysis
+
+- Host Detection Reasoning
+
+---
+
+# Conclusion
+
+In this part, I learned:
+
+- How Nmap detects operating systems.
+- How OS fingerprinting works.
+- How to identify the network path.
+- How to interpret Nmap's detection results.
