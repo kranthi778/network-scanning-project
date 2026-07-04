@@ -328,3 +328,164 @@ In this part, I learned:
 - The difference between TCP and UDP scanning.
 - How to scan selected ports.
 - How to scan all TCP ports.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Part 3 – Service & Version Detection
+
+## Objective
+
+I want to learn how to find out what services are running on ports and what versions they are. This is really important for checking if something is vulnerable and for the rest of the hacking process.
+
+---
+
+# What is Service & Version Detection?
+
+So after I find out which ports are open the next thing I need to do is figure out what service is running on each port and what version it is.
+
+Knowing the version of a service helps people who work in security:
+
+- Find out if the software is old.
+
+- Look for known problems with the service.
+
+- Check if the service is set up correctly.
+
+---
+
+## 1. Detect Service Versions
+
+### Scenario
+
+I need to identify the services and their versions that are running on my target.
+
+### Command
+
+```bash
+
+sudo nmap -sV 192.168.1.10
+
+```
+
+### Description
+
+This command checks the versions of services that are running on ports.
+
+### Screenshot
+
+![Alt text](screenshots/nmap-service-version.png)
+
+---
+
+## 2. Detect Services with Default Scripts
+
+### Scenario
+
+I want to get information about the services using the default scripts that come with Nmap.
+
+### Command
+
+```bash
+
+sudo nmap -sV -sC 192.168.1.10
+
+```
+
+### Description
+
+This command checks the versions of services. Also uses the default Nmap scripts to get more information.
+
+### Screenshot
+
+![Alt text](screenshots/nmap-service-default-scripts.png)
+
+
+---
+
+## 3. Increase Version Detection Intensity
+
+### Scenario
+
+I want to do a detailed check of the service versions.
+
+### Command
+
+```bash
+
+sudo nmap -sV --version-intensity 9 192.168.1.10
+
+```
+
+### Description
+
+This command makes the version check more intense so it can find the versions accurately.
+
+### Screenshot
+
+![Alt text](screenshots/nmap-version-intensity.png)
+
+---
+
+## 4. Detect Versions on Specific Ports
+
+### Scenario
+
+I only want to check the versions of services.
+
+### Command
+
+```bash
+
+sudo nmap -sV -p 22,80,443 192.168.1.10
+
+```
+
+### Description
+
+This command only checks the versions of the services that are running on the ports I specify.
+
+### Screenshot
+
+![Alt text](screenshots/version-selected-ports.png)
+
+---
+
+# Information Collected
+
+When I do service detection I can find out:
+
+- What the service is called
+
+- What version it is
+
+- What product it is
+
+- What protocol it uses
+
+- If the port is open or not
+
+---
+
+# Key Concepts Learned
+
+- Service detection is when I find out what services are running.
+
+- Version detection is when I find out what version a service is.
+
+- Nmap can scan for versions.
+
+- The default NSE scripts can help me find out more, about the services.
+
+- I can make the version detection more intense.
+
+---
+
+# Conclusion
+
+In this part, I learned:
+
+- How to identify services running on open ports.
+- How to determine software versions.
+- How default NSE scripts improve service identification.
+- Why version detection is important before vulnerability analysis.
